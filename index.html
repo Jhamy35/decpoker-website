@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecPoker - Calculateur de Poker Professionnel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+CjxwYXR0ZXJuIGlkPSJwb2tlciIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzFhMWEyZSIvPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIzMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNWQ2YWYzIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuMyIvPgo8L3BhdHRlcm4+CjwvZGVmcz4KPHJLQ3QgZmlsbD0idXJsKCNwb2tlcikiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIi8+Cjwvc3ZnPg==');
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .download-btn {
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .download-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+        
+        .features {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .features h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a1a2e;
+            font-size: 2.5rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+        }
+        
+        .screenshots {
+            background: #f8f9fa;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .tech-specs {
+            background: #1a1a2e;
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .tech-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🃏 DecPoker</h1>
+            <p>L'Assistant Poker Professionnel</p>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Maîtrisez le Poker</h1>
+            <p>Calculateur d'equity, analyseur de mains et conseils stratégiques en temps réel</p>
+            <a href="https://play.google.com/store/apps/details?id=com.jhamy.decpok" class="download-btn">
+                📱 Télécharger sur Google Play
+            </a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Fonctionnalités Avancées</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧮</div>
+                    <h3>Calcul d'Equity Précis</h3>
+                    <p>Calculez vos chances de gagner en temps réel selon vos cartes, le board et le nombre d'adversaires</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Recommandations EV+</h3>
+                    <p>Obtenez des conseils de mise maximale pour chaque situation selon votre equity et position</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Mode Rapide</h3>
+                    <p>Analysez vos mains instantanément avec des recommandations FOLD/CALL/RAISE adaptées</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analyse Stratégique</h3>
+                    <p>Recevez des explications détaillées sur les décisions optimales selon la théorie moderne</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Interface Intuitive</h3>
+                    <p>Design moderne et ergonomique pensé pour une utilisation rapide en partie</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Calculs Instantanés</h3>
+                    <p>Algorithmes optimisés pour des résultats ultra-rapides même sur mobile</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screenshots">
+        <div class="container">
+            <h2>Aperçu de l'Application</h2>
+            <p>Interface moderne et professionnelle pour tous les niveaux de joueurs</p>
+            <!-- Ici vous pourrez ajouter des captures d'écran -->
+        </div>
+    </section>
+
+    <section class="tech-specs">
+        <div class="container">
+            <h2>Spécifications Techniques</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h3>📱 Plateforme</h3>
+                    <p>Android 6.0+</p>
+                </div>
+                <div class="tech-item">
+                    <h3>⚡ Performance</h3>
+                    <p>Calculs optimisés</p>
+                </div>
+                <div class="tech-item">
+                    <h3>🎨 Design</h3>
+                    <p>Material Design</p>
+                </div>
+                <div class="tech-item">
+                    <h3>🔒 Sécurité</h3>
+                    <p>Données locales</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Studio Jhamy - DecPoker. Tous droits réservés.</p>
+            <p>Développé avec ❤️ pour la communauté poker</p>
+        </div>
+    </footer>
+</body>
+                                          </html>
